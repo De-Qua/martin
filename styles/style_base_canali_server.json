@@ -1,0 +1,1349 @@
+{
+    "bearing": 0,
+    "center": [
+        0,
+        0
+    ],
+    "glyphs": "{TILES_SERVER_URL}/font/{fontstack}/{range}",
+    "id": "base_canali_server",
+    "layers": [
+        {
+            "id": "background",
+            "type": "background",
+            "layout": {
+                "visibility": "visible"
+            },
+            "paint": {
+                "background-color": "rgba(244, 240, 240, 1)"
+            }
+        },
+        {
+            "id": "dequa_verde_pubblico",
+            "type": "fill",
+            "metadata": {
+                "maputnik:comment": "Questo \u00e8 verde pubblico, Santa Marta andrebbe tolta, \u00e8 zona militare. Andrebbe tolto anche da sacca san biagio"
+            },
+            "source": "openmaptiles",
+            "source-layer": "landcover",
+            "filter": [
+                "any",
+                [
+                    "==",
+                    "class",
+                    "grass"
+                ],
+                [
+                    "==",
+                    "class",
+                    "wood"
+                ]
+            ],
+            "layout": {
+                "visibility": "visible"
+            },
+            "paint": {
+                "fill-antialias": false,
+                "fill-color": "rgba(211, 220, 209, 1)",
+                "fill-opacity": 1
+            }
+        },
+        {
+            "id": "dequa_campi",
+            "type": "fill",
+            "source": "openmaptiles",
+            "source-layer": "transportation",
+            "filter": [
+                "all",
+                [
+                    "==",
+                    "$type",
+                    "Polygon"
+                ]
+            ],
+            "layout": {
+                "visibility": "visible"
+            },
+            "paint": {
+                "fill-color": "rgba(255, 255, 255, 1)"
+            }
+        },
+        {
+            "id": "dequa_cimitero",
+            "type": "fill",
+            "metadata": {
+                "maputnik:comment": "Per ora \u00e8 come il verde pubblico"
+            },
+            "source": "openmaptiles",
+            "source-layer": "landuse",
+            "filter": [
+                "==",
+                "class",
+                "cemetery"
+            ],
+            "layout": {
+                "visibility": "visible"
+            },
+            "paint": {
+                "fill-color": "rgba(211, 220, 209, 1)",
+                "fill-opacity": 1
+            }
+        },
+        {
+            "id": "dequa_ospedale",
+            "type": "fill",
+            "source": "openmaptiles",
+            "source-layer": "landuse",
+            "filter": [
+                "==",
+                "class",
+                "hospital"
+            ],
+            "paint": {
+                "fill-color": "rgba(225, 213, 213, 1)"
+            }
+        },
+        {
+            "id": "dequa_verde_scuole",
+            "type": "fill",
+            "source": "openmaptiles",
+            "source-layer": "landuse",
+            "filter": [
+                "==",
+                "class",
+                "school"
+            ],
+            "layout": {
+                "visibility": "none"
+            },
+            "paint": {
+                "fill-color": "rgb(236,238,204)"
+            }
+        },
+        {
+            "id": "acqua_laguna",
+            "type": "fill",
+            "source": "openmaptiles",
+            "source-layer": "water",
+            "filter": [
+                "all",
+                [
+                    "!=",
+                    "brunnel",
+                    "tunnel"
+                ]
+            ],
+            "layout": {
+                "visibility": "visible"
+            },
+            "paint": {
+                "fill-color": "rgba(226, 255, 255, 1)"
+            }
+        },
+        {
+            "id": "acqua_canali",
+            "type": "line",
+            "source": "openmaptiles",
+            "source-layer": "waterway",
+            "minzoom": 11,
+            "maxzoom": 24,
+            "filter": [
+                "all",
+                [
+                    "!=",
+                    "brunnel",
+                    "tunnel"
+                ]
+            ],
+            "layout": {
+                "line-cap": "round",
+                "visibility": "visible"
+            },
+            "paint": {
+                "line-color": "rgba(226, 255, 255, 1)",
+                "line-width": [
+                    "interpolate",
+                    [
+                        "exponential",
+                        1.7
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    12,
+                    0.1,
+                    22,
+                    350
+                ]
+            }
+        },
+        {
+            "id": "dequa_spiaggie",
+            "type": "fill",
+            "source": "openmaptiles",
+            "source-layer": "landcover",
+            "filter": [
+                "all",
+                [
+                    "==",
+                    "class",
+                    "sand"
+                ]
+            ],
+            "layout": {
+                "visibility": "visible"
+            },
+            "paint": {
+                "fill-color": "rgba(246, 234, 187, 1)",
+                "fill-opacity": 0.5
+            }
+        },
+        {
+            "id": "strade_sotoporteghi",
+            "type": "line",
+            "source": "openmaptiles",
+            "source-layer": "transportation",
+            "filter": [
+                "all",
+                [
+                    "==",
+                    "$type",
+                    "LineString"
+                ],
+                [
+                    "==",
+                    "brunnel",
+                    "tunnel"
+                ],
+                [
+                    "in",
+                    "class",
+                    "path",
+                    "pedestrian"
+                ]
+            ],
+            "paint": {
+                "line-color": "rgba(205, 181, 170, 1)",
+                "line-dasharray": [
+                    1,
+                    0.1
+                ],
+                "line-width": {
+                    "base": 1.2,
+                    "stops": [
+                        [
+                            14,
+                            0.5
+                        ],
+                        [
+                            20,
+                            20
+                        ]
+                    ]
+                }
+            }
+        },
+        {
+            "id": "strade_calli",
+            "type": "line",
+            "source": "openmaptiles",
+            "source-layer": "transportation",
+            "minzoom": 0,
+            "maxzoom": 24,
+            "filter": [
+                "all",
+                [
+                    "==",
+                    "$type",
+                    "LineString"
+                ],
+                [
+                    "!in",
+                    "brunnel",
+                    "bridge",
+                    "tunnel"
+                ],
+                [
+                    "in",
+                    "class",
+                    "path",
+                    "pedestrian"
+                ]
+            ],
+            "layout": {
+                "line-join": "round",
+                "visibility": "visible"
+            },
+            "paint": {
+                "line-color": "rgba(255, 255, 255, 1)",
+                "line-dasharray": [
+                    1,
+                    0
+                ],
+                "line-width": [
+                    "interpolate",
+                    [
+                        "exponential",
+                        2
+                    ],
+                    [
+                        "zoom"
+                    ],
+                    13,
+                    0.01,
+                    20,
+                    120
+                ],
+                "line-blur": {
+                    "stops": [
+                        [
+                            0,
+                            10
+                        ],
+                        [
+                            3,
+                            0
+                        ]
+                    ]
+                }
+            }
+        },
+        {
+            "id": "strade_ponti_contorno",
+            "type": "line",
+            "source": "openmaptiles",
+            "source-layer": "transportation",
+            "filter": [
+                "all",
+                [
+                    "==",
+                    "$type",
+                    "LineString"
+                ],
+                [
+                    "==",
+                    "brunnel",
+                    "bridge"
+                ],
+                [
+                    "in",
+                    "class",
+                    "path",
+                    "pedestrian"
+                ]
+            ],
+            "layout": {
+                "visibility": "visible"
+            },
+            "paint": {
+                "line-color": "rgba(227, 224, 221, 1)",
+                "line-dasharray": [
+                    1,
+                    0
+                ],
+                "line-width": {
+                    "base": 1.2,
+                    "stops": [
+                        [
+                            14,
+                            1.5
+                        ],
+                        [
+                            20,
+                            14
+                        ]
+                    ]
+                }
+            }
+        },
+        {
+            "id": "macchine_ponte_liberta",
+            "type": "line",
+            "source": "openmaptiles",
+            "source-layer": "transportation",
+            "filter": [
+                "all",
+                [
+                    "==",
+                    "brunnel",
+                    "bridge"
+                ],
+                [
+                    "in",
+                    "class",
+                    "minor"
+                ]
+            ],
+            "layout": {
+                "line-join": "round",
+                "visibility": "visible"
+            },
+            "paint": {
+                "line-color": "#fff",
+                "line-width": {
+                    "base": 1.2,
+                    "stops": [
+                        [
+                            13.5,
+                            0
+                        ],
+                        [
+                            14,
+                            2.5
+                        ],
+                        [
+                            20,
+                            18
+                        ]
+                    ]
+                }
+            }
+        },
+        {
+            "id": "macchine_strade_minori",
+            "type": "line",
+            "source": "openmaptiles",
+            "source-layer": "transportation",
+            "filter": [
+                "all",
+                [
+                    "==",
+                    "$type",
+                    "LineString"
+                ],
+                [
+                    "!in",
+                    "brunnel",
+                    "bridge",
+                    "tunnel"
+                ],
+                [
+                    "in",
+                    "class",
+                    "minor"
+                ]
+            ],
+            "layout": {
+                "line-cap": "round",
+                "line-join": "round",
+                "visibility": "visible"
+            },
+            "paint": {
+                "line-color": "#fff",
+                "line-width": {
+                    "base": 1.2,
+                    "stops": [
+                        [
+                            13.5,
+                            0
+                        ],
+                        [
+                            14,
+                            2.5
+                        ],
+                        [
+                            20,
+                            18
+                        ]
+                    ]
+                }
+            }
+        },
+        {
+            "id": "macchine_corsie_ponte_liberta",
+            "type": "line",
+            "source": "openmaptiles",
+            "source-layer": "transportation",
+            "filter": [
+                "all",
+                [
+                    "in",
+                    "class",
+                    "primary",
+                    "trunk"
+                ]
+            ],
+            "layout": {
+                "line-join": "round",
+                "visibility": "visible"
+            },
+            "paint": {
+                "line-color": "rgba(239, 239, 239, 1)",
+                "line-width": {
+                    "base": 1.2,
+                    "stops": [
+                        [
+                            5,
+                            0.4
+                        ],
+                        [
+                            6,
+                            0.7
+                        ],
+                        [
+                            7,
+                            1.75
+                        ],
+                        [
+                            20,
+                            22
+                        ]
+                    ]
+                }
+            }
+        },
+        {
+            "id": "dequa_ponti_ripieno",
+            "type": "line",
+            "source": "openmaptiles",
+            "source-layer": "transportation",
+            "filter": [
+                "all",
+                [
+                    "==",
+                    "$type",
+                    "LineString"
+                ],
+                [
+                    "==",
+                    "brunnel",
+                    "bridge"
+                ],
+                [
+                    "in",
+                    "class",
+                    "path",
+                    "pedestrian"
+                ]
+            ],
+            "layout": {
+                "visibility": "visible"
+            },
+            "paint": {
+                "line-color": "hsl(0, 0%, 100%)",
+                "line-dasharray": [
+                    1,
+                    0.3
+                ],
+                "line-width": {
+                    "base": 1.2,
+                    "stops": [
+                        [
+                            14,
+                            0.5
+                        ],
+                        [
+                            20,
+                            10
+                        ]
+                    ]
+                }
+            }
+        },
+        {
+            "id": "treni",
+            "type": "line",
+            "source": "openmaptiles",
+            "source-layer": "transportation",
+            "filter": [
+                "all",
+                [
+                    "==",
+                    "class",
+                    "rail"
+                ],
+                [
+                    "==",
+                    "brunnel",
+                    "bridge"
+                ]
+            ],
+            "layout": {
+                "visibility": "visible"
+            },
+            "paint": {
+                "line-color": "#bbb",
+                "line-width": {
+                    "base": 1.4,
+                    "stops": [
+                        [
+                            14,
+                            0.4
+                        ],
+                        [
+                            15,
+                            0.75
+                        ],
+                        [
+                            20,
+                            2
+                        ]
+                    ]
+                }
+            }
+        },
+        {
+            "id": "treni_stazione_hatching",
+            "type": "line",
+            "source": "openmaptiles",
+            "source-layer": "transportation",
+            "filter": [
+                "all",
+                [
+                    "==",
+                    "class",
+                    "rail"
+                ],
+                [
+                    "==",
+                    "brunnel",
+                    "bridge"
+                ]
+            ],
+            "layout": {
+                "visibility": "visible"
+            },
+            "paint": {
+                "line-color": "#bbb",
+                "line-dasharray": [
+                    0.2,
+                    8
+                ],
+                "line-width": {
+                    "base": 1.4,
+                    "stops": [
+                        [
+                            14.5,
+                            0
+                        ],
+                        [
+                            15,
+                            3
+                        ],
+                        [
+                            20,
+                            8
+                        ]
+                    ]
+                }
+            }
+        },
+        {
+            "id": "treni_tram",
+            "type": "line",
+            "source": "openmaptiles",
+            "source-layer": "transportation",
+            "filter": [
+                "all",
+                [
+                    "==",
+                    "class",
+                    "transit"
+                ],
+                [
+                    "==",
+                    "brunnel",
+                    "bridge"
+                ]
+            ],
+            "layout": {
+                "visibility": "visible"
+            },
+            "paint": {
+                "line-color": "#bbb",
+                "line-width": {
+                    "base": 1.4,
+                    "stops": [
+                        [
+                            14,
+                            0.4
+                        ],
+                        [
+                            15,
+                            0.75
+                        ],
+                        [
+                            20,
+                            2
+                        ]
+                    ]
+                }
+            }
+        },
+        {
+            "id": "treni_tram_hatching",
+            "type": "line",
+            "source": "openmaptiles",
+            "source-layer": "transportation",
+            "filter": [
+                "all",
+                [
+                    "==",
+                    "class",
+                    "transit"
+                ],
+                [
+                    "==",
+                    "brunnel",
+                    "bridge"
+                ]
+            ],
+            "layout": {
+                "visibility": "visible"
+            },
+            "paint": {
+                "line-color": "#bbb",
+                "line-dasharray": [
+                    0.2,
+                    8
+                ],
+                "line-width": {
+                    "base": 1.4,
+                    "stops": [
+                        [
+                            14.5,
+                            0
+                        ],
+                        [
+                            15,
+                            3
+                        ],
+                        [
+                            20,
+                            8
+                        ]
+                    ]
+                }
+            }
+        },
+        {
+            "id": "building",
+            "type": "fill",
+            "source": "openmaptiles",
+            "source-layer": "building",
+            "minzoom": 14,
+            "maxzoom": 17,
+            "layout": {
+                "visibility": "visible"
+            },
+            "paint": {
+                "fill-color": "rgba(237, 237, 237, 1)",
+                "fill-outline-color": {
+                    "base": 1,
+                    "stops": [
+                        [
+                            13,
+                            "hsla(35, 6%, 79%, 0.32)"
+                        ],
+                        [
+                            14,
+                            "hsl(35, 6%, 79%)"
+                        ]
+                    ]
+                }
+            }
+        },
+        {
+            "id": "building-3d",
+            "type": "fill-extrusion",
+            "source": "openmaptiles",
+            "source-layer": "building",
+            "minzoom": 17,
+            "paint": {
+                "fill-extrusion-color": "rgba(227, 227, 227, 1)",
+                "fill-extrusion-height": {
+                    "property": "render_height",
+                    "type": "identity"
+                },
+                "fill-extrusion-base": {
+                    "property": "render_min_height",
+                    "type": "identity"
+                },
+                "fill-extrusion-opacity": 0.8
+            }
+        },
+        {
+            "id": "dequa_dighe_mose",
+            "type": "line",
+            "source": "openmaptiles",
+            "source-layer": "boundary",
+            "minzoom": 8,
+            "filter": [
+                "all",
+                [
+                    "in",
+                    "admin_level",
+                    3,
+                    4
+                ]
+            ],
+            "layout": {
+                "line-join": "round",
+                "visibility": "none"
+            },
+            "paint": {
+                "line-color": "#9e9cab",
+                "line-dasharray": [
+                    5,
+                    1
+                ],
+                "line-width": {
+                    "base": 1,
+                    "stops": [
+                        [
+                            4,
+                            0.4
+                        ],
+                        [
+                            5,
+                            1
+                        ],
+                        [
+                            12,
+                            1.8
+                        ]
+                    ]
+                }
+            }
+        },
+        {
+            "id": "poi_z16",
+            "type": "symbol",
+            "metadata": {
+                "maputnik:comment": "In base ad un ranking che viene da osm (probabilmente) mostriamo POI diversi a seconda dello zoom... Dovete pagarci per salire\n\nRistoranti sembrano meno importanti"
+            },
+            "source": "openmaptiles",
+            "source-layer": "poi",
+            "minzoom": 16,
+            "filter": [
+                "all",
+                [
+                    "==",
+                    "$type",
+                    "Point"
+                ],
+                [
+                    ">=",
+                    "rank",
+                    20
+                ],
+                [
+                    "!=",
+                    "class",
+                    "ferry_terminal"
+                ]
+            ],
+            "layout": {
+                "icon-image": "{class}_11",
+                "text-anchor": "top",
+                "text-field": "{name}",
+                "text-font": [
+                    "Roboto Condensed Italic"
+                ],
+                "text-max-width": 9,
+                "text-offset": [
+                    0,
+                    0.6
+                ],
+                "text-size": 12,
+                "visibility": "visible"
+            },
+            "paint": {
+                "text-color": "#666",
+                "text-halo-blur": 0.5,
+                "text-halo-color": "#ffffff",
+                "text-halo-width": 1
+            }
+        },
+        {
+            "id": "poi_z15",
+            "type": "symbol",
+            "metadata": {
+                "maputnik:comment": "negozi un po' pi\u00f9 importanti"
+            },
+            "source": "openmaptiles",
+            "source-layer": "poi",
+            "minzoom": 15,
+            "filter": [
+                "all",
+                [
+                    "==",
+                    "$type",
+                    "Point"
+                ],
+                [
+                    ">=",
+                    "rank",
+                    7
+                ],
+                [
+                    "<",
+                    "rank",
+                    20
+                ]
+            ],
+            "layout": {
+                "icon-image": "{class}_11",
+                "text-anchor": "top",
+                "text-field": "{name}",
+                "text-font": [
+                    "Inter Italic"
+                ],
+                "text-max-width": 9,
+                "text-offset": [
+                    0,
+                    0.6
+                ],
+                "text-size": 12,
+                "visibility": "visible"
+            },
+            "paint": {
+                "text-color": "#666",
+                "text-halo-blur": 0.5,
+                "text-halo-color": "#ffffff",
+                "text-halo-width": 1
+            }
+        },
+        {
+            "id": "poi_z14",
+            "type": "symbol",
+            "metadata": {
+                "maputnik:comment": "Palazzi, conventi"
+            },
+            "source": "openmaptiles",
+            "source-layer": "poi",
+            "minzoom": 14,
+            "filter": [
+                "all",
+                [
+                    "==",
+                    "$type",
+                    "Point"
+                ],
+                [
+                    ">=",
+                    "rank",
+                    1
+                ],
+                [
+                    "<",
+                    "rank",
+                    7
+                ]
+            ],
+            "layout": {
+                "text-anchor": "top",
+                "text-field": "{name}",
+                "text-font": [
+                    "Inter Italic"
+                ],
+                "text-max-width": 9,
+                "text-offset": [
+                    0,
+                    0.6
+                ],
+                "text-size": 12,
+                "text-line-height": 1,
+                "visibility": "none"
+            },
+            "paint": {
+                "text-color": "#666",
+                "text-halo-blur": 0.5,
+                "text-halo-color": "#ffffff",
+                "text-halo-width": 1
+            }
+        },
+        {
+            "id": "poi_transit",
+            "type": "symbol",
+            "source": "openmaptiles",
+            "source-layer": "poi",
+            "minzoom": 15,
+            "filter": [
+                "all",
+                [
+                    "in",
+                    "class",
+                    "bus",
+                    "rail",
+                    "airport",
+                    "ferry_terminal"
+                ]
+            ],
+            "layout": {
+                "icon-image": "{class}_11",
+                "text-anchor": "left",
+                "text-field": "{name_en}",
+                "text-font": [
+                    "Roboto Condensed Italic"
+                ],
+                "text-max-width": 9,
+                "text-offset": [
+                    0.9,
+                    0
+                ],
+                "text-size": 12,
+                "visibility": "visible"
+            },
+            "paint": {
+                "text-color": "rgba(0, 0, 0, 1)",
+                "text-halo-blur": 0.5,
+                "text-halo-color": "#ffffff",
+                "text-halo-width": 1
+            }
+        },
+        {
+            "id": "road_label",
+            "type": "symbol",
+            "source": "openmaptiles",
+            "source-layer": "transportation_name",
+            "minzoom": 16,
+            "filter": [
+                "all"
+            ],
+            "layout": {
+                "symbol-placement": "line",
+                "text-anchor": "center",
+                "text-field": "{name}",
+                "text-font": [
+                    "Roboto Regular"
+                ],
+                "text-offset": [
+                    0,
+                    0.15
+                ],
+                "text-size": {
+                    "base": 1,
+                    "stops": [
+                        [
+                            13,
+                            12
+                        ],
+                        [
+                            14,
+                            13
+                        ]
+                    ]
+                },
+                "visibility": "visible"
+            },
+            "paint": {
+                "text-color": "rgba(60, 60, 59, 1)",
+                "text-halo-blur": 0.5,
+                "text-halo-width": 1
+            }
+        },
+        {
+            "id": "nomi_campi",
+            "type": "symbol",
+            "metadata": {
+                "maputnik:comment": "Piazza san Marco non ha nome in questa mappa "
+            },
+            "source": "openmaptiles",
+            "source-layer": "transportation_name",
+            "minzoom": 14,
+            "maxzoom": 16,
+            "filter": [
+                "any",
+                [
+                    "==",
+                    "name",
+                    "Campo San Polo"
+                ],
+                [
+                    "==",
+                    "name",
+                    "Piazza San Marco"
+                ],
+                [
+                    "==",
+                    "name",
+                    "Campo Santa Margherita"
+                ],
+                [
+                    "==",
+                    "name",
+                    "Fondamenta Zattere al Ponte Longo"
+                ],
+                [
+                    "==",
+                    "name",
+                    "Piazzale Roma"
+                ],
+                [
+                    "==",
+                    "name",
+                    "Campo de Gheto Novo"
+                ],
+                [
+                    "==",
+                    "name",
+                    "Ponte di Rialto"
+                ],
+                [
+                    "==",
+                    "name",
+                    "Campo Santi Giovanni e Paolo"
+                ],
+                [
+                    "==",
+                    "name",
+                    "Campo Santa Maria Formosa"
+                ],
+                [
+                    "==",
+                    "name",
+                    "Campo San Pietro"
+                ],
+                [
+                    "==",
+                    "name",
+                    "Fondamente Nove"
+                ],
+                [
+                    "==",
+                    "name",
+                    "Campo Santo Stefano"
+                ],
+                [
+                    "==",
+                    "name",
+                    "Campo San Giacomo dall'Orio"
+                ],
+                [
+                    "==",
+                    "name",
+                    "Campo de l'Arsenal"
+                ],
+                [
+                    "==",
+                    "name",
+                    "Campo dei Frari"
+                ],
+                [
+                    "==",
+                    "name",
+                    "Fondamenta Santa Lucia"
+                ],
+                [
+                    "==",
+                    "name",
+                    "Ponte de l'Accademia"
+                ],
+                [
+                    "==",
+                    "name",
+                    "Strada Nova"
+                ],
+                [
+                    "==",
+                    "name",
+                    "Campo de la Salute"
+                ]
+            ],
+            "layout": {
+                "text-allow-overlap": false,
+                "text-ignore-placement": false,
+                "text-anchor": "center",
+                "text-field": "{name}",
+                "text-font": [
+                    "Roboto Regular"
+                ],
+                "text-offset": [
+                    0,
+                    0.15
+                ],
+                "text-size": {
+                    "base": 1,
+                    "stops": [
+                        [
+                            12,
+                            13
+                        ],
+                        [
+                            16,
+                            20
+                        ]
+                    ]
+                },
+                "visibility": "none",
+                "icon-size": 1
+            },
+            "paint": {
+                "text-color": "rgba(60, 60, 59, 1)",
+                "text-halo-blur": 0.5,
+                "text-halo-width": 1
+            }
+        },
+        {
+            "id": "nomi_canaletti",
+            "type": "symbol",
+            "source": "openmaptiles",
+            "source-layer": "water_name",
+            "minzoom": 16.5,
+            "filter": [
+                "==",
+                "$type",
+                "Point"
+            ],
+            "layout": {
+                "text-field": "{name}",
+                "text-font": [
+                    "Roboto Regular"
+                ],
+                "text-max-width": 5,
+                "text-size": 12,
+                "text-line-height": 1
+            },
+            "paint": {
+                "text-color": "rgba(0, 140, 106, 1)",
+                "text-halo-color": "rgba(255,255,255,0.7)",
+                "text-halo-width": 1
+            }
+        },
+        {
+            "id": "nomi_canali",
+            "type": "symbol",
+            "source": "openmaptiles",
+            "source-layer": "waterway",
+            "minzoom": 15.5,
+            "filter": [
+                "all",
+                [
+                    "==",
+                    "$type",
+                    "LineString"
+                ]
+            ],
+            "layout": {
+                "text-field": "{name}",
+                "text-font": [
+                    "Inter Regular"
+                ],
+                "text-max-width": 5,
+                "text-size": 12,
+                "symbol-placement": "line"
+            },
+            "paint": {
+                "text-color": "rgba(1, 142, 109, 1)",
+                "text-halo-color": "rgba(255,255,255,0.7)",
+                "text-halo-width": 1
+            }
+        },
+        {
+            "id": "nomi_canali_importanti",
+            "type": "symbol",
+            "source": "openmaptiles",
+            "source-layer": "waterway",
+            "minzoom": 8,
+            "filter": [
+                "any",
+                [
+                    "==",
+                    "name",
+                    "Canal Grande"
+                ],
+                [
+                    "==",
+                    "name",
+                    "Canale della Giudecca"
+                ],
+                [
+                    "==",
+                    "name",
+                    "Canale di Cannaregio"
+                ],
+                [
+                    "==",
+                    "name",
+                    "Bacino San Marco"
+                ]
+            ],
+            "layout": {
+                "text-field": "{name}",
+                "text-font": [
+                    "Inter Regular"
+                ],
+                "text-max-width": 5,
+                "text-size": 12,
+                "symbol-placement": "line"
+            },
+            "paint": {
+                "text-color": "rgba(1, 142, 109, 1)",
+                "text-halo-color": "rgba(255,255,255,0.7)",
+                "text-halo-width": 1
+            }
+        },
+        {
+            "id": "nomi_importanti",
+            "type": "symbol",
+            "source": "openmaptiles",
+            "source-layer": "place",
+            "filter": [
+                "all",
+                [
+                    "!=",
+                    "name",
+                    "San Sebastiano"
+                ],
+                [
+                    "!=",
+                    "name",
+                    "Sacca San Biagio"
+                ]
+            ],
+            "layout": {
+                "text-field": "{name_en}",
+                "text-font": [
+                    "Inter Medium"
+                ],
+                "text-letter-spacing": 0.03,
+                "text-max-width": 9,
+                "text-size": {
+                    "base": 1.2,
+                    "stops": [
+                        [
+                            12,
+                            14
+                        ],
+                        [
+                            15,
+                            24
+                        ]
+                    ]
+                },
+                "text-transform": "none",
+                "text-offset": [
+                    -1,
+                    -2
+                ],
+                "text-allow-overlap": false,
+                "visibility": "visible"
+            },
+            "paint": {
+                "text-color": "rgba(60, 60, 59, 1)",
+                "text-halo-color": "rgba(255,255,255,0.8)",
+                "text-opacity": 1,
+                "text-halo-width": 1.2
+            }
+        }
+    ],
+    "metadata": {
+        "mapbox:type": "template",
+        "openmaptiles:version": "3.x"
+    },
+    "name": "base_canali_server",
+    "pitch": 0,
+    "sources": {
+        "maptiler_attribution": {
+            "attribution": "<a href=\"https://www.openstreetmap.org/copyright\" target=\"_blank\">&copy; OpenStreetMap contributors</a>",
+            "type": "vector"
+        },
+        "openmaptiles": {
+            "type": "vector",
+            "url": "{TILES_SERVER_URL}/dequa_tiles"
+        }
+    },
+    "sprite": "{TILES_SERVER_URL}/sprite/osm-liberty",
+    "version": 8,
+    "zoom": 1
+}

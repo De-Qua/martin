@@ -1,0 +1,103 @@
+# Connection keep alive timeout [default: 75]
+keep_alive: 75
+
+# The socket address to bind [default: 0.0.0.0:3000]
+listen_addresses: 0.0.0.0:3000
+
+# Set TileJSON URL path prefix.
+# This overrides the default of respecting the X-Rewrite-URL header.
+# Only modifies the JSON (TileJSON) returned; Martin's API-URLs remain unchanged.
+# If you need to rewrite URLs, please use a reverse proxy.
+# Must begin with a `/`.
+# Examples: `/`, `/tiles`
+base_path: /
+
+# Number of web server workers
+worker_processes: 8
+
+# Amount of memory (in MB) to use for caching tiles [default: 512, 0 to disable]
+cache_size_mb: 512
+
+# Which compression should be used if the
+# - client accepts multiple compression formats, and
+# - tile source is not pre-compressed.
+#
+# `gzip` is faster, but `brotli` is smaller, and may be faster with caching.
+# Default could be different depending on Martin version.
+preferred_encoding: gzip
+
+# Enable or disable Martin web UI. [default: disable]
+#
+# At the moment, only allows `enable-for-all`, which enables the web UI for all connections.
+# This may be undesirable in a production environment
+web_ui: enable-for-all
+
+# Advanced monitoring options
+observability:
+  # Configure metrics reported under `/_/metrics`
+  metrics:
+    # Add these labels to every metric
+    # Example: `{ env: prod, server: martin }`
+    add_labels: {}
+
+# CORS Configuration
+#
+# Defaults to `cors: true`, which allows all origins.
+# Sending/Acting on CORS headers can be completely disabled via `cors: false`
+# cors:
+#   # Sets the `Access-Control-Allow-Origin` header [default: *]
+#   # '*' will use the requests `ORIGIN` header
+#   origin:
+#     - https://example.org
+#   # Sets `Access-Control-Max-Age` Header. [default: null]
+#   # null means not setting the header for preflight requests
+#   max_age: 3600
+
+
+
+# Publish MBTiles files
+mbtiles:
+  paths:
+    # scan this whole dir, matching all *.mbtiles files
+    - /data/mbtiles
+
+# Sprite configuration
+sprites:
+  paths:
+    # all SVG files in this dir will be published as a "my_images" sprite source
+    - /data/sprites
+  sources:
+    # SVG images in this directory will be published under the sprite_id "my_sprites"
+    sprite: /data/sprites
+
+# Font configuration
+fonts:
+  # A list of *.otf, *.ttf, and *.ttc font files and dirs to search recursively.
+  - /data/fonts
+
+# Publish MapLibre style files
+# In the future, the style files will be used for the server-side rendering as well
+styles:
+   paths:
+     # publish all *.json files in this directory
+     # The name of the file will be used as the style name
+     - /data/styles
+
+# If set, the version of the tileset (as specified in the MBTiles or PMTiles metadata)
+# will be embedded in the TileJSON `tiles` URL, with the set identifier.
+# This is useful to give clients a better way to cache-bust a CDN:
+# 1. maplibre requests tilejson, tilejson contains the tiles URL. This is always up-to-date.
+# 2. maplibre requests each tile it requires, with the tiles URL in the tilejson.
+# 3. Add `Control: public, max-age=..., immutable` on the tile responses
+#    optimize browser/CDN cache hit rates, while also making sure that
+#    old tiles aren't served when a new tileset is deployed.
+#
+# The CDN must handle query parameters for caching to work correctly.
+# Many CDNs ignore them by default.
+#
+# For example, if
+# - the setting here is `version`, and
+# - the PMTiles tileset version is `1.0.0`, the
+# TileJSON will be:
+# { ..., "tiles": [".../{z}/{x}/{y}?version=1.0.0"], ... }
+tilejson_url_version_param: null # a string, such as `version` or `v`

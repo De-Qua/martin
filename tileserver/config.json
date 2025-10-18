@@ -1,0 +1,27 @@
+{
+  "options": {
+    "paths": {
+      "root": "/data",
+      "fonts": "fonts",
+      "styles": "styles",
+      "sprites": "sprites",
+      "mbtiles": "mbtiles"
+    },
+    "formatQuality": {
+      "jpeg": 80,
+      "webp": 90
+    },
+    "maxScaleFactor": 3,
+    "maxSize": 2048,
+    "pbfAlias": "pbf",
+    "serveAllFonts": true,
+    "serveAllStyles": true,
+    "serveStaticMaps": true,
+    "tileMargin": 0
+  },
+  "data": {
+    "dequa_tiles": {
+      "mbtiles": "dequa_tiles.mbtiles"
+    }
+  }
+}

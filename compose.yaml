@@ -1,0 +1,20 @@
+services:
+  # tileserver:
+  #   image: maptiler/tileserver-gl
+  #   container_name: dq_tiles
+  #   restart: unless-stopped
+  #   volumes:
+  #     - "./tileserver:/data"
+  martin:
+    image: ghcr.io/maplibre/martin:latest
+    container_name: dq_tiles_martin
+    restart: unless-stopped
+    volumes:
+      - "./tileserver:/data"
+    # command: "/data/mbtiles --webui enable-for-all"
+    command: "--config /data/config.martin.yaml"
+
+networks:
+  default:
+    name: dequa_nw
+    external: true

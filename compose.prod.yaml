@@ -1,0 +1,9 @@
+services:
+  # tileserver:
+  #   expose:
+  #     - "8080"
+
+  martin:
+    expose:
+      - "3000"
+    command: "--config /data/config.martin.yaml"
