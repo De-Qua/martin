@@ -63,12 +63,13 @@ mbtiles:
 
 # Sprite configuration
 sprites:
-  paths:
-    # all SVG files in this dir will be published as a "my_images" sprite source
-    - /data/sprites
+  # paths:
+  #   # all SVG files in this dir will be published as a "my_images" sprite source
+  #   - /data/sprites
   sources:
     # SVG images in this directory will be published under the sprite_id "my_sprites"
-    sprite: /data/sprites
+    osm-bright: /data/sprites/osm-bright
+    osm-liberty: /data/sprites/osm-liberty
 
 # Font configuration
 fonts:
