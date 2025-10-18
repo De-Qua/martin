@@ -9,7 +9,7 @@
     "sources": {
       "openmaptiles": {
         "type": "vector",
-        "url": "/dequa_tiles"
+        "url": "{TILES_SERVER_URL}/dequa_tiles"
       },
       "natural_earth_shaded_relief": {
         "maxzoom": 6,

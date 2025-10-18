@@ -13,11 +13,11 @@
         },
         "openmaptiles": {
             "type": "vector",
-            "url": "/dequa_tiles"
+            "url": "{TILES_SERVER_URL}/dequa_tiles"
         }
     },
     "sprite": "{TILES_SERVER_URL}/sprite/osm-liberty",
-    "glyphs": "/font/{fontstack}/{range}",
+    "glyphs": "{TILES_SERVER_URL}/font/{fontstack}/{range}",
     "pitch": 0,
     "bearing": 0,
     "center": [
@@ -1461,7 +1461,7 @@
                     "bus",
                     "rail",
                     "airport",
-                    "ferry_terminal"
+                    "{TILES_SERVER_URL}_terminal"
                 ]
             ],
             "layout": {
