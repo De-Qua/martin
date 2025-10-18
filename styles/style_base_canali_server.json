@@ -1,11 +1,30 @@
 {
+    "version": 8,
+    "id": "base_canali_server",
+    "name": "DeQua Barca",
+    "metadata": {
+        "mapbox:type": "template",
+        "openmaptiles:version": "3.x"
+    },
+    "sources": {
+        "maptiler_attribution": {
+            "attribution": "<a href=\"https://www.openstreetmap.org/copyright\" target=\"_blank\">&copy; OpenStreetMap contributors</a>",
+            "type": "vector"
+        },
+        "openmaptiles": {
+            "type": "vector",
+            "url": "/dequa_tiles"
+        }
+    },
+    "sprite": "{TILES_SERVER_URL}/sprite/osm-liberty",
+    "glyphs": "/font/{fontstack}/{range}",
+    "pitch": 0,
     "bearing": 0,
     "center": [
         0,
         0
     ],
-    "glyphs": "{TILES_SERVER_URL}/font/{fontstack}/{range}",
-    "id": "base_canali_server",
+    "zoom": 1,
     "layers": [
         {
             "id": "background",
@@ -1326,24 +1345,5 @@
                 "text-halo-width": 1.2
             }
         }
-    ],
-    "metadata": {
-        "mapbox:type": "template",
-        "openmaptiles:version": "3.x"
-    },
-    "name": "base_canali_server",
-    "pitch": 0,
-    "sources": {
-        "maptiler_attribution": {
-            "attribution": "<a href=\"https://www.openstreetmap.org/copyright\" target=\"_blank\">&copy; OpenStreetMap contributors</a>",
-            "type": "vector"
-        },
-        "openmaptiles": {
-            "type": "vector",
-            "url": "{TILES_SERVER_URL}/dequa_tiles"
-        }
-    },
-    "sprite": "{TILES_SERVER_URL}/sprite/osm-liberty",
-    "version": 8,
-    "zoom": 1
+    ]
 }
