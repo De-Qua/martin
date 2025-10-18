@@ -44,8 +44,9 @@ if [ -f "$SERVER_TILES_PATH/$TILES_TMP_NAME" ]; then
     fi
 fi
 
-cp "$TMP_OUT_FOLDER/$TILES_TMP_NAME" "$SERVER_TILES_PATH/$TILES_TMP_NAME"
+echo "Copy $TILES_TMP_NAME to server"
 
+cp "$TMP_OUT_FOLDER/$TILES_TMP_NAME" "$SERVER_TILES_PATH/$TILES_TMP_NAME"
 
 if [ -f "$SERVER_TILES_PATH/$TILES_NAME" ]; then
     # ask if overwrite (default no)
@@ -57,6 +58,8 @@ if [ -f "$SERVER_TILES_PATH/$TILES_NAME" ]; then
     fi
 fi
 
+echo "Update $TILES_NAME on server"
 cp "$SERVER_TILES_PATH/$TILES_TMP_NAME" "$SERVER_TILES_PATH/$TILES_NAME"
+rm "$SERVER_TILES_PATH/$TILES_TMP_NAME"
 
 echo "✅ Done!"
