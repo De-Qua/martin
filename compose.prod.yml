@@ -1,8 +1,4 @@
 services:
-  # tileserver:
-  #   expose:
-  #     - "8080"
-
   martin:
     expose:
       - "3000"
