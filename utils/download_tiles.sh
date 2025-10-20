@@ -28,7 +28,7 @@ if [ -f "$TMP_OUT_FOLDER/$TILES_TMP_NAME" ]; then
 fi
 
 
-docker run -e JAVA_TOOL_OPTIONS="-Xmx2g" \
+docker run --rm -e JAVA_TOOL_OPTIONS="-Xmx2g" \
     -v "$TMP_OUT_FOLDER":/data \
     ghcr.io/onthegomap/planetiler:latest \
     --download --area=italy --mbtiles=/data/$TILES_TMP_NAME
