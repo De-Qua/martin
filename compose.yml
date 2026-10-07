@@ -7,6 +7,12 @@ services:
       - "./tileserver:/data"
     # command: "/data/mbtiles --webui enable-for-all"
     command: "--config /data/config.martin.yaml"
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "5"
+        compress: "true"
 
 networks:
   default:
