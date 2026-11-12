@@ -1,14 +1,6 @@
 {
   "glyphs": "{TILES_SERVER_URL}/font/{fontstack}/{range}",
-  "sprite": {
-    "base": {
-        "id": "osm-liberty",
-        "url": "{TILES_SERVER_URL}/sprite/osm-liberty"
-    },
-    "dequa": {
-        "id": "dequa",
-        "url": "{TILES_SERVER_URL}/sprite/dequa"
-    },
+  "sprite": "{TILES_SERVER_URL}/sprite/osm-liberty,dequa",
   "sources": {
     "idranti": {
       "url": "{TILES_SERVER_URL}/dequa_hydrants",
@@ -2739,7 +2731,7 @@
         "layout": {
             "icon-image": "ferry_terminal"
         }
-        },
+    },
     {
       "id": "idranti",
       "type": "symbol",
