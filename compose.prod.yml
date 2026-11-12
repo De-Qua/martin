@@ -3,3 +3,23 @@ services:
     expose:
       - "3000"
     command: "--config /data/config.martin.yaml"
+
+  tiles_cron:
+    build: ./planetiler
+    container_name: dq_tiles_cron
+    restart: unless-stopped
+    environment:
+      - TZ=Europe/Rome
+    # shortcut: project mounted at its host path so the script's `docker run -v` paths resolve on the host;
+    # requires running `docker compose` from the project dir
+    working_dir: ${PWD}
+    volumes:
+      - "${PWD}:${PWD}"
+      # gives this container root-equivalent control of the host Docker
+      - /var/run/docker.sock:/var/run/docker.sock
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "5"
+        compress: "true"

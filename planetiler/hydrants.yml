@@ -1,0 +1,27 @@
+# Planetiler custom schema: OSM fire hydrants (emergency=fire_hydrant), not included in OpenMapTiles
+schema_name: DeQua hydrants
+schema_description: OSM fire hydrants
+attribution: <a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a>
+args:
+  area:
+    description: Geofabrik area to download
+    default: italy
+sources:
+  osm:
+    type: osm
+    url: '${ "geofabrik:" + args.area }'
+    # reuse the extract downloaded by the OpenMapTiles build
+    local_path: '${ "data/sources/" + args.area + ".osm.pbf" }'
+layers:
+  - id: hydrants
+    features:
+      - source: osm
+        geometry: point
+        min_zoom: 14
+        include_when:
+          emergency: fire_hydrant
+        attributes:
+          - key: fire_hydrant:type
+          - key: fire_hydrant:position
+          - key: ref
+          - key: operator

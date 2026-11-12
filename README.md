@@ -21,8 +21,12 @@ docker compose -f compose.yml -f compose.prod.yml up -d
 
 ## Create tiles
 
-To create new tiles we use planetiler, with a convenient script
+To create new tiles we use planetiler, with a non-interactive script (safe to run from cron).
+It builds the tiles, swaps them atomically into `tileserver/mbtiles/dequa_tiles.mbtiles` and restarts Martin.
 
 ```bash
-sh utils/download_tiles.sh
+bash planetiler/download_tiles.sh
 ```
+
+In production the `tiles_cron` service (supercronic, see `planetiler/crontab`) runs it every monday at 3:00.
+It uses the host Docker socket, so run `docker compose` from the project dir. Logs: `docker logs dq_tiles_cron`.
