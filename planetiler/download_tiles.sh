@@ -15,7 +15,9 @@ MARTIN_CONTAINER="dq_tiles_martin"
 KEEP_BUILDS=2  # dated builds kept in data_tmp as backup
 
 planetiler() {
-    docker run --rm -e JAVA_TOOL_OPTIONS="-Xmx2g" \
+    # Fixed name: recognizable in Dozzle and prevents two builds running at once
+    docker run --rm --name dq_planetiler_build \
+        -e JAVA_TOOL_OPTIONS="-Xmx2g" \
         -v "$TMP_OUT_FOLDER":/data \
         -v "$CUR_DIR":/schema:ro \
         "$PLANETILER_IMAGE" "$@"

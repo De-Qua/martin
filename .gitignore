@@ -90,3 +90,6 @@ $RECYCLE.BIN/
 data_tmp
 *.mbtiles
 tileserver/styles/*.json
+# RIve: generated from the PDFs (rive.py images); keep the .points files and rive.geojson
+Rive/
+

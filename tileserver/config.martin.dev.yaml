@@ -70,6 +70,8 @@ sprites:
     # SVG images in this directory will be published under the sprite_id "my_sprites"
     osm-bright: /data/sprites/osm-bright
     osm-liberty: /data/sprites/osm-liberty
+    dequa: /data/sprites/dequa
+
 
 # Font configuration
 fonts:

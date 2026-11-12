@@ -1,3 +1,3 @@
-# Scheduled jobs run by supercronic inside the dq_tiles_cron container (timezone: TZ in compose.prod.yml)
+# Scheduled jobs run by supercronic inside the dq_planetiler container (timezone: TZ in compose.prod.yml)
 # m  h  dom mon dow   command
 0    3  *   *   1     bash planetiler/download_tiles.sh
