@@ -4,9 +4,9 @@ services:
       - "3000"
     command: "--config /data/config.martin.yaml"
 
-  tiles_cron:
+  planetiler:
     build: ./planetiler
-    container_name: dq_tiles_cron
+    container_name: dq_planetiler
     restart: unless-stopped
     environment:
       - TZ=Europe/Rome
