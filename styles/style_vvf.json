@@ -1,6 +1,14 @@
 {
   "glyphs": "{TILES_SERVER_URL}/font/{fontstack}/{range}",
-  "sprite": "{TILES_SERVER_URL}/sprite/osm-liberty",
+  "sprite": {
+    "base": {
+        "id": "osm-liberty",
+        "url": "{TILES_SERVER_URL}/sprite/osm-liberty"
+    },
+    "dequa": {
+        "id": "dequa",
+        "url": "{TILES_SERVER_URL}/sprite/dequa"
+    },
   "sources": {
     "idranti": {
       "url": "{TILES_SERVER_URL}/dequa_hydrants",
@@ -23,7 +31,7 @@
       "type": "vector"
     }
   },
-  "id": "osm-liberty",
+  "id": "vvf",
   "layers": [
     {
       "id": "background",
@@ -2719,6 +2727,19 @@
         "fill-opacity": 0.6
       }
     },
+    {
+        "id": "battelli",
+        "type": "symbol",
+        "source": "openmaptiles",
+        "source-layer": "poi",
+        "filter": [
+            "all",
+            ["==", "class", "ferry_terminal"]
+        ],
+        "layout": {
+            "icon-image": "ferry_terminal"
+        }
+        },
     {
       "id": "idranti",
       "type": "symbol",
