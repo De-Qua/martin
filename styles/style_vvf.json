@@ -2738,7 +2738,7 @@
       "source": "idranti",
       "source-layer": "hydrants",
       "layout": {
-        "icon-image": "fire_station",
+        "icon-image": "idrante",
         "icon-allow-overlap": true,
         "icon-ignore-placement": true,
         "icon-size": 1
@@ -2755,7 +2755,7 @@
         ["==", "class", "fire_station"]
       ],
       "layout": {
-        "icon-image": "parking_garage"
+        "icon-image": "caserma-pompieri"
       }
     }
   ],
