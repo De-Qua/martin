@@ -2,10 +2,6 @@
   "glyphs": "{TILES_SERVER_URL}/font/{fontstack}/{range}",
   "sprite": "{TILES_SERVER_URL}/sprite/osm-liberty,dequa",
   "sources": {
-    "idranti": {
-      "url": "{TILES_SERVER_URL}/dequa_hydrants",
-      "type": "vector"
-    },
     "natural_earth_shaded_relief": {
       "tiles": [
         "https://klokantech.github.io/naturalearthtiles/tiles/natural_earth_2_shaded_relief.raster/{z}/{x}/{y}.png"
@@ -15,11 +11,7 @@
       "type": "raster"
     },
     "openmaptiles": {
-      "url": "{TILES_SERVER_URL}/dequa_tiles",
-      "type": "vector"
-    },
-    "rive": {
-      "url": "{TILES_SERVER_URL}/dequa_rive",
+      "url": "{TILES_SERVER_URL}/dequa_all",
       "type": "vector"
     }
   },
@@ -2663,7 +2655,7 @@
     {
       "id": "rive-casing",
       "type": "line",
-      "source": "rive",
+      "source": "openmaptiles",
       "source-layer": "rive",
       "layout": {
         "line-join": "round",
@@ -2687,7 +2679,7 @@
     {
       "id": "rive-line",
       "type": "line",
-      "source": "rive",
+      "source": "openmaptiles",
       "source-layer": "rive",
       "layout": {
         "line-join": "round",
@@ -2711,7 +2703,7 @@
     {
       "id": "rive-fill",
       "type": "fill",
-      "source": "rive",
+      "source": "openmaptiles",
       "source-layer": "rive",
       "minzoom": 0,
       "paint": {
@@ -2735,7 +2727,7 @@
     {
       "id": "idranti",
       "type": "symbol",
-      "source": "idranti",
+      "source": "openmaptiles",
       "source-layer": "hydrants",
       "layout": {
         "icon-image": "idrante",

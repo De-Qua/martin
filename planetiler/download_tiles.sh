@@ -1,7 +1,9 @@
 #!/bin/bash
-# Build Italy tiles with planetiler and swap them into Martin. Non-interactive (meant for cron).
-#  - dequa_tiles.mbtiles:    OpenMapTiles base map
-#  - dequa_hydrants.mbtiles: fire hydrants (custom schema in hydrants.yml, missing from OpenMapTiles)
+# Build Italy tiles with planetiler, join them into dequamap.mbtiles and swap them into Martin.
+# Non-interactive (meant for cron).
+#  - dequa_tiles.mbtiles: OpenMapTiles base map, rebuilt every run
+#  - dequa_hydrants.mbtiles, dequa_rive.mbtiles: built once, they don't change (see README)
+#  - dequamap.mbtiles: the three above joined (join_tiles.sh), the source used by the styles
 set -euo pipefail
 
 CUR_DIR="$(cd "$(dirname "$0")" && pwd)"
@@ -38,13 +40,8 @@ echo "Build dequa_tiles_$DATE.mbtiles"
 planetiler --download --refresh-sources --area=italy --force \
     --mbtiles="/data/dequa_tiles_$DATE.mbtiles"
 
-# Reuses data/sources/italy.osm.pbf just refreshed by the build above
-echo "Build dequa_hydrants_$DATE.mbtiles"
-planetiler generate-custom --schema=/schema/hydrants.yml --area=italy --force \
-    --output="/data/dequa_hydrants_$DATE.mbtiles"
-
 publish dequa_tiles
-publish dequa_hydrants
+bash "$CUR_DIR/join_tiles.sh"
 
 # Martin keeps the old files open and only scans the folder at startup: restart it
 if docker ps -q -f "name=^${MARTIN_CONTAINER}$" | grep -q .; then

@@ -60,7 +60,6 @@ mbtiles:
   paths:
     # scan this whole dir, matching all *.mbtiles files
     - /data/mbtiles
-
 # Sprite configuration
 sprites:
   # paths:
