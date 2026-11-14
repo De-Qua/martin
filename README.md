@@ -23,8 +23,8 @@ docker compose -f compose.yml -f compose.prod.yml up -d
 
 To create new tiles we use planetiler, with a non-interactive script (safe to run from cron).
 It builds the base map, swaps it atomically into `tileserver/mbtiles/dequa_tiles.mbtiles`, joins it with
-hydrants and rive into `dequamap.mbtiles` (`planetiler/join_tiles.sh`) and restarts Martin.
-The styles use `dequamap`: Martin composite sources (`a,b,c` or `aliases`) concatenate the gzipped tiles
+hydrants and rive into `dequa_all.mbtiles` (`planetiler/join_tiles.sh`) and restarts Martin.
+The styles use `dequa_all`: Martin composite sources (`a,b,c` or `aliases`) concatenate the gzipped tiles
 and browsers only read the first one, so the join is done with `tile-join` (image built on first run from
 `planetiler/tippecanoe.Dockerfile`).
 
