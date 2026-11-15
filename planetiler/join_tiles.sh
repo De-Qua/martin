@@ -27,7 +27,7 @@ docker run --rm --name dq_tile_join \
     "$TIPPECANOE_IMAGE" --force --no-tile-size-limit \
     -n "DeQua" -N "OpenMapTiles + hydrants + rive" \
     -o /data/dequa_all.mbtiles \
-    /in/dequa_tiles.mbtiles /in/dequa_hydrants.mbtiles /in/dequa_rive.mbtiles
+    /in/dequa_tiles.mbtiles /in/dequa_hydrants.mbtiles /in/dequa_rive.mbtiles /in/dequa_canali.mbtiles
 
 # Copy under a name Martin ignores (not *.mbtiles), then rename atomically over the live file
 cp "$TMP_OUT_FOLDER/dequa_all.mbtiles" "$SERVER_TILES_PATH/.dequa_all.mbtiles.part"

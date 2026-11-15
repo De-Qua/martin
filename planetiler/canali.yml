@@ -1,0 +1,29 @@
+# Planetiler custom schema: Venice canals (shapefile CAN_LAG_4326VE_v2)
+schema_name: DeQua canali
+sources:
+  canali:
+    type: shapefile
+    local_path: /canali/CAN_LAG_4326VE_v2.shp   # .shx, .dbf, .prj alongside
+layers:
+  - id: canali
+    features:
+      - source: canali
+        geometry: polygon
+        min_zoom: 0
+        attributes:
+          - key: CAN_LAG_TY
+          - key: TC_CODDEN
+          - key: TC_SPECIE
+          - key: TC_DENOM
+          - key: VEL_MAX
+          - key: VEL_MAX_MP
+          - key: LIM_DIM
+          - key: DIVIETO_TR
+          - key: ONEWAY
+          - key: BARCHE_A_R
+          - key: ALTRE_PRES
+          - key: COMPETENZA
+          - key: TIPO_CANAL
+          - key: NORMATIVA
+          - key: STAZZA_MAX
+          - key: LARGH_MAX
