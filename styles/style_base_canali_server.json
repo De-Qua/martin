@@ -1344,6 +1344,16 @@
                 "text-opacity": 1,
                 "text-halo-width": 1.2
             }
+        },
+        {
+            "id": "canali_limiti",
+            "type": "fill",
+            "source": "openmaptiles",
+            "source-layer": "canali",
+            "paint": {
+                "fill-color": "#000000",
+                "fill-opacity": 0.01
+            }
         }
     ]
 }
