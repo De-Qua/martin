@@ -13,7 +13,7 @@
         },
         "openmaptiles": {
             "type": "vector",
-            "url": "{TILES_SERVER_URL}/dequa_tiles"
+            "url": "{TILES_SERVER_URL}/dequa_all"
         }
     },
     "sprite": "{TILES_SERVER_URL}/sprite/osm-liberty",
