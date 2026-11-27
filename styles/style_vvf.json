@@ -16,7 +16,7 @@
             "url": "{TILES_SERVER_URL}/dequa_all"
         }
     },
-    "sprite": "{TILES_SERVER_URL}/sprite/osm-liberty",
+    "sprite": "{TILES_SERVER_URL}/sprite/osm-liberty,dequa",
     "glyphs": "{TILES_SERVER_URL}/font/{fontstack}/{range}",
     "pitch": 0,
     "bearing": 0,
